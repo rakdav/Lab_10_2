@@ -61,9 +61,14 @@ namespace Lab_10_2
             if(!file.Exists)file.Create();
             List<int> lh = list.Where(i=>i%2!=0).ToList();
             OrdAsync(h, g, lh);
-            lh = list.Where(i => i % 2 == 0).ToList();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            List<int> lh = list.Where(i => i % 2 == 0).ToList();
             OddAync(h, g, lh);
         }
+
         private async void OddAync(string h, string g, List<int> l)
         {
             using (StreamWriter writer = new StreamWriter(h, false))
