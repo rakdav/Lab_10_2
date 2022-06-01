@@ -60,7 +60,7 @@ namespace Lab_10_2
             file=new FileInfo(g);
             if(!file.Exists)file.Create();
             List<int> lh = list.Where(i=>i%2!=0).ToList();
-            OrdAsync(h, g, lh);
+            OddAync(h, g, lh);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -84,27 +84,6 @@ namespace Lab_10_2
                     using (StreamWriter writer = new StreamWriter(g, true))
                     {
                         await writer.WriteLineAsync(line);
-                    }
-                }
-            }
-            FileInfo file = new FileInfo(h);
-            file.Delete();
-        }
-        private async void OrdAsync(string h, string g,List<int> l)
-        {
-            using (StreamWriter writer = new StreamWriter(h, false))
-            {
-                foreach(int i in l)
-                await writer.WriteLineAsync(i.ToString());
-            }
-            using (StreamReader reader = new StreamReader(h))
-            {
-                string? line;
-                while ((line = await reader.ReadLineAsync()) != null)
-                {
-                    using (StreamWriter writer = new StreamWriter(g, false))
-                    {
-                       await writer.WriteLineAsync(line);
                     }
                 }
             }
